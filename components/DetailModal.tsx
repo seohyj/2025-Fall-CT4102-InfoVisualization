@@ -131,10 +131,10 @@ export default function DetailModal({
             <div className="p-6 md:p-8 space-y-6">
               {/* Header */}
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
                   {species.commonName}
                 </h1>
-                <p className="text-lg md:text-xl text-white/60 italic">
+                <p className="text-xl md:text-2xl text-white/60 italic">
                   {species.scientificName}
                 </p>
               </div>

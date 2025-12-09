@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Species Data Schema",
+  "description": "Schema for The Spectrum of Extinction species data",
+  "type": "object",
+  "required": ["species", "metadata"],
+  "properties": {
+    "species": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Species"
+      }
+    },
+    "metadata": {
+      "$ref": "#/definitions/Metadata"
+    }
+  },
+  "definitions": {
+    "Species": {
+      "type": "object",
+      "required": [
+        "id",
+        "scientificName",
+        "commonName",
+        "category",
+        "status",
+        "statusHistory",
+        "location",
+        "populationTrend",
+        "threats"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the species"
+        },
+        "scientificName": {
+          "type": "string",
+          "description": "Binomial scientific name"
+        },
+        "commonName": {
+          "type": "string",
+          "description": "Common name of the species"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Mammals",
+            "Birds",
+            "Fish",
+            "Reptiles",
+            "Amphibians",
+            "Insects",
+            "Plants"
+          ],
+          "description": "Taxonomic category"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["LC", "NT", "VU", "EN", "CR", "EW", "EX"],
+          "description": "Current IUCN status (latest year)"
+        },
+        "statusHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpeciesStatusHistory"
+          },
+          "minItems": 1,
+          "description": "Array of status records by year"
+        },
+        "location": {
+          "$ref": "#/definitions/SpeciesLocation"
+        },
+        "imageUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to species image (optional)"
+        },
+        "populationTrend": {
+          "type": "string",
+          "enum": ["decreasing", "stable", "increasing", "unknown"],
+          "description": "Population trend indicator"
+        },
+        "threats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Threat"
+          },
+          "minItems": 1,
+          "description": "Array of threats"
+        },
+        "description": {
+          "type": "string",
+          "description": "Narrative description of species status (optional)"
+        },
+        "iucnUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to IUCN Red List page (optional)"
+        }
+      }
+    },
+    "SpeciesStatusHistory": {
+      "type": "object",
+      "required": ["year", "status"],
+      "properties": {
+        "year": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 2100,
+          "description": "Year of assessment"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["LC", "NT", "VU", "EN", "CR", "EW", "EX"],
+          "description": "IUCN status for this year"
+        },
+        "assessedDate": {
+          "type": "string",
+          "format": "date",
+          "description": "ISO 8601 date of assessment (optional)"
+        }
+      }
+    },
+    "SpeciesLocation": {
+      "type": "object",
+      "required": ["lat", "lng"],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90,
+          "description": "Latitude"
+        },
+        "lng": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Longitude"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country name (optional)"
+        },
+        "region": {
+          "type": "string",
+          "description": "Region/subdivision (optional)"
+        }
+      }
+    },
+    "Threat": {
+      "type": "object",
+      "required": ["code", "title"],
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "IUCN threat code"
+        },
+        "title": {
+          "type": "string",
+          "description": "Threat description"
+        },
+        "timing": {
+          "type": "string",
+          "description": "Timing of threat (optional)"
+        },
+        "scope": {
+          "type": "string",
+          "description": "Scope of threat (optional)"
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity description (optional)"
+        }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "required": ["totalCount", "lastUpdated", "yearRange"],
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of species"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of last update"
+        },
+        "yearRange": {
+          "type": "object",
+          "required": ["min", "max"],
+          "properties": {
+            "min": {
+              "type": "integer",
+              "description": "Minimum year in status history"
+            },
+            "max": {
+              "type": "integer",
+              "description": "Maximum year in status history"
+            }
+          }
+        }
+      }
+    }
+  }
+}

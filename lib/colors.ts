@@ -1,20 +1,20 @@
 /**
- * 9-Step Red Gradient Color System
- * From Dark/Muted Red (Least Concern) to Bright/Neon Red (Extinct)
+ * Multi-Color Spectrum Color System
+ * Seaborn-style modern palette with distinct colors for each IUCN status
  *
- * This color scale represents the spectrum of extinction risk,
- * NOT based on opacity but on actual color intensity.
+ * This color scale uses distinct, easily distinguishable colors
+ * to represent the spectrum of extinction risk.
  */
 
 export const EXTINCTION_COLORS = {
-  // IUCN Red List Categories
-  LC: "#4A1F1F", // Least Concern - Dark Muted Red
-  NT: "#5A2A2A", // Near Threatened
-  VU: "#6B3535", // Vulnerable
-  EN: "#7D4040", // Endangered
-  CR: "#8F4B4B", // Critically Endangered
-  EW: "#A15656", // Extinct in the Wild
-  EX: "#FF1744", // Extinct - Bright Neon Red
+  // IUCN Red List Categories - New Color Palette
+  LC: "#4B8F54", // Least Concern - Green
+  NT: "#F7C948", // Near Threatened - Yellow
+  VU: "#E9692C", // Vulnerable - Orange
+  EN: "#C42F40", // Endangered - Dark Red
+  CR: "#3A3A3A", // Critically Endangered - Dark Grey
+  EW: "#A4A4A4", // Extinct in the Wild - Grey
+  EX: "#EFEFEF", // Extinct - Light Grey
 } as const;
 
 /**

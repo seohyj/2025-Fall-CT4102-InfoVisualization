@@ -52,7 +52,9 @@ export default function StatsChart({
 
   return (
     <div className="w-full h-full flex flex-col">
-      <h3 className="text-xl font-bold mb-4 text-white">Status Distribution</h3>
+      <h3 className="text-2xl font-bold mb-4 text-white">
+        Status Distribution
+      </h3>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={chartData}

@@ -60,7 +60,7 @@ export default function YearSlider({
     <div className="absolute right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center">
       {/* Year Display */}
       <motion.div
-        className="mb-4 text-4xl font-bold text-white drop-shadow-lg"
+        className="mb-4 text-5xl font-bold text-white drop-shadow-lg"
         animate={{ scale: isDragging ? 1.1 : 1 }}
         transition={{ duration: 0.2 }}
       >
@@ -78,8 +78,10 @@ export default function YearSlider({
 
         {/* Filled Track */}
         <motion.div
-          className="absolute bottom-0 w-1 bg-gradient-to-t from-extinction-lc via-extinction-cr to-extinction-ex3 rounded-full"
-          style={{ height: `${percentage}%` }}
+          className="absolute bottom-0 w-1 bg-white rounded-full"
+          style={{
+            height: `${percentage}%`,
+          }}
           transition={{ duration: 0.3 }}
         />
 
@@ -97,7 +99,7 @@ export default function YearSlider({
         />
 
         {/* Year Labels */}
-        <div className="absolute inset-0 flex flex-col justify-between text-xs text-gray-400 pointer-events-none">
+        <div className="absolute inset-0 flex flex-col justify-between text-sm text-gray-400 pointer-events-none">
           <span>{maxYear}</span>
           <span className="opacity-0">{minYear}</span>
           <span>{minYear}</span>
@@ -105,7 +107,7 @@ export default function YearSlider({
       </div>
 
       {/* Year Range Label */}
-      <div className="mt-4 text-xs text-gray-500">
+      <div className="mt-4 text-sm text-gray-500">
         {minYear} - {maxYear}
       </div>
     </div>

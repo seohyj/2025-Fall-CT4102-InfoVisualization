@@ -26,8 +26,8 @@ export default function MapComponent({
     return species.filter((s) => s.category === selectedCategory);
   }, [species, selectedCategory]);
 
-  // Map style - Dark theme
-  const mapStyle = "mapbox://styles/mapbox/dark-v11";
+  // Map style - Realistic Earth (Satellite)
+  const mapStyle = "mapbox://styles/mapbox/standard-satellite";
 
   // Initial viewport
   const initialViewState = {
@@ -46,11 +46,8 @@ export default function MapComponent({
         projection={{ name: "globe" }}
         reuseMaps
       >
-        {/* Custom dark styling overlay */}
+        {/* Custom styling overlay */}
         <style>{`
-          .mapboxgl-map {
-            background-color: #000000;
-          }
           .mapboxgl-ctrl-logo {
             display: none !important;
           }
@@ -72,10 +69,10 @@ export default function MapComponent({
               latitude={s.location.lat}
             >
               <div
-                className="w-3 h-3 rounded-full border border-white/30 transition-all duration-300 hover:scale-150 cursor-pointer"
+                className="w-3 h-3 rounded-full border-2 border-white transition-all duration-300 hover:scale-150 cursor-pointer"
                 style={{
                   backgroundColor: color,
-                  boxShadow: `0 0 6px ${color}60, 0 0 12px ${color}30`,
+                  boxShadow: `0 0 8px ${color}80, 0 0 16px ${color}50, 0 0 24px rgba(255, 255, 255, 0.3)`,
                 }}
                 title={s.commonName}
               />

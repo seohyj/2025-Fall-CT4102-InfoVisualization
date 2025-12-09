@@ -36,7 +36,7 @@ export default function SpeciesGrid({
 
   return (
     <div className="w-full h-full overflow-y-auto">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredSpecies.map((s, index) => {
           const status = getSpeciesStatusAtYear(s, selectedYear);
           const statusColor = getStatusColor(status);

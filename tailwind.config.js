@@ -8,27 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // 9-step Red Gradient Scale
+        // Multi-Color Spectrum Scale - New Palette
         extinction: {
-          lc: "#4A1F1F", // Least Concern - Dark Muted Red
-          nt: "#5A2A2A", // Near Threatened
-          vu: "#6B3535", // Vulnerable
-          en: "#7D4040", // Endangered
-          cr: "#8F4B4B", // Critically Endangered
-          ew: "#A15656", // Extinct in the Wild
-          ex: "#B36161", // Extinct (Intermediate)
-          ex2: "#C56C6C", // Extinct (Bright)
-          ex3: "#FF1744", // Extinct (Neon Red)
+          lc: "#4B8F54", // Least Concern - Green
+          nt: "#F7C948", // Near Threatened - Yellow
+          vu: "#E9692C", // Vulnerable - Orange
+          en: "#C42F40", // Endangered - Dark Red
+          cr: "#3A3A3A", // Critically Endangered - Dark Grey
+          ew: "#A4A4A4", // Extinct in the Wild - Grey
+          ex: "#EFEFEF", // Extinct - Light Grey
         },
         // Status mapping for easier access
         status: {
-          LC: "#4A1F1F",
-          NT: "#5A2A2A",
-          VU: "#6B3535",
-          EN: "#7D4040",
-          CR: "#8F4B4B",
-          EW: "#A15656",
-          EX: "#FF1744",
+          LC: "#4B8F54",
+          NT: "#F7C948",
+          VU: "#E9692C",
+          EN: "#C42F40",
+          CR: "#3A3A3A",
+          EW: "#A4A4A4",
+          EX: "#EFEFEF",
         },
       },
       backgroundImage: {
