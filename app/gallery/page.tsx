@@ -12,6 +12,16 @@ import SpeciesGrid from "@/components/SpeciesGrid";
 import DetailModal from "@/components/DetailModal";
 import YearSlider from "@/components/YearSlider";
 
+const CATEGORY_LABELS: Record<Category, { en: string; ko: string }> = {
+  Mammals: { en: "Mammals", ko: "포유류" },
+  Birds: { en: "Birds", ko: "조류" },
+  Fish: { en: "Fish", ko: "어류" },
+  Reptiles: { en: "Reptiles", ko: "파충류" },
+  Amphibians: { en: "Amphibians", ko: "양서류" },
+  Insects: { en: "Insects", ko: "곤충류" },
+  Plants: { en: "Plants", ko: "식물" },
+};
+
 function GalleryContent() {
   const searchParams = useSearchParams();
   const [data, setData] = useState<SpeciesData | null>(null);
@@ -110,7 +120,11 @@ function GalleryContent() {
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Map</span>
           </Link>
-          <h1 className="text-2xl font-bold">{selectedCategory}</h1>
+          <h1 className="text-3xl font-bold">
+            {selectedCategory && CATEGORY_LABELS[selectedCategory]
+              ? `${CATEGORY_LABELS[selectedCategory].en} (${CATEGORY_LABELS[selectedCategory].ko})`
+              : selectedCategory}
+          </h1>
           <div className="w-24"></div>
         </div>
       </header>
@@ -120,8 +134,10 @@ function GalleryContent() {
         {/* Left Panel - Stats Chart */}
         <div className="w-full md:w-[35%] lg:w-[30%] p-8 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-white/10 bg-black/50 flex-shrink-0 flex flex-col">
           <div className="flex-shrink-0">
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">
-              {selectedCategory}
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+              {selectedCategory && CATEGORY_LABELS[selectedCategory]
+                ? `${CATEGORY_LABELS[selectedCategory].en} (${CATEGORY_LABELS[selectedCategory].ko})`
+                : selectedCategory}
             </h2>
           </div>
           <div className="flex-1 min-h-0" style={{ minHeight: "300px" }}>
@@ -146,10 +162,10 @@ function GalleryContent() {
         {/* Right Panel - Photo Grid */}
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
           <div className="p-8 md:p-10 lg:p-12 border-b border-white/10 flex-shrink-0">
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-1">
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2">
               Species Gallery
             </h3>
-            <p className="text-white/60 text-sm md:text-base">
+            <p className="text-white/60 text-base md:text-lg">
               {categorySpecies.length} species found
               {selectedStatus && ` • Filtered by ${selectedStatus}`}
             </p>
