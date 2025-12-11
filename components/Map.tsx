@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Species, Category } from "@/lib/types";
@@ -20,6 +20,8 @@ export default function MapComponent({
   selectedCategory,
   mapboxToken,
 }: MapComponentProps) {
+  const [hoveredSpecies, setHoveredSpecies] = useState<Species | null>(null);
+
   // Filter species by category
   const filteredSpecies = useMemo(() => {
     if (!selectedCategory) return species;
@@ -37,7 +39,7 @@ export default function MapComponent({
   };
 
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full z-10">
       <Map
         mapboxAccessToken={mapboxToken}
         initialViewState={initialViewState}
@@ -61,6 +63,7 @@ export default function MapComponent({
         {filteredSpecies.map((s) => {
           const status = getSpeciesStatusAtYear(s, selectedYear);
           const color = getStatusColor(status);
+          const isHovered = hoveredSpecies?.id === s.id;
 
           return (
             <Marker
@@ -69,13 +72,29 @@ export default function MapComponent({
               latitude={s.location.lat}
             >
               <div
-                className="w-3 h-3 rounded-full border-2 border-white transition-all duration-300 hover:scale-150 cursor-pointer"
-                style={{
-                  backgroundColor: color,
-                  boxShadow: `0 0 8px ${color}80, 0 0 16px ${color}50, 0 0 24px rgba(255, 255, 255, 0.3)`,
-                }}
-                title={s.commonName}
-              />
+                className="relative"
+                onMouseEnter={() => setHoveredSpecies(s)}
+                onMouseLeave={() => setHoveredSpecies(null)}
+              >
+                <div
+                  className="w-3 h-3 rounded-full border-2 border-white transition-all duration-300 hover:scale-150 cursor-pointer"
+                  style={{
+                    backgroundColor: color,
+                    boxShadow: `0 0 8px ${color}80, 0 0 16px ${color}50, 0 0 24px rgba(255, 255, 255, 0.3)`,
+                  }}
+                />
+                {/* Tooltip */}
+                {isHovered && (
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-black/90 backdrop-blur-sm rounded-lg border border-white/20 whitespace-nowrap pointer-events-none z-50">
+                    <span className="text-white text-xl font-medium">
+                      {s.commonName}
+                    </span>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+                      <div className="w-2 h-2 bg-black/90 border-r border-b border-white/20 transform rotate-45"></div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </Marker>
           );
         })}

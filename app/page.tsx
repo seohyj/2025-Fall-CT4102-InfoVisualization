@@ -11,6 +11,7 @@ import DetailModal from "@/components/DetailModal";
 import ViewToggleBtn from "@/components/ViewToggleBtn";
 import { loadSpeciesData, getCategories } from "@/lib/data";
 import { SpeciesData, Category, Species } from "@/lib/types";
+import Image from "next/image";
 
 const MIN_YEAR = 2009;
 const MAX_YEAR = 2025;
@@ -124,7 +125,7 @@ function HomeContent() {
         />
 
         {/* Title */}
-        <div className="absolute top-8 left-8 z-20">
+        <div className="absolute top-12 left-12 z-20">
           <h1 className="text-6xl font-bold text-white drop-shadow-lg mb-2">
             The Spectrum
           </h1>
@@ -143,10 +144,20 @@ function HomeContent() {
           aboutButton={
             <Link
               href="/about"
-              className="p-3 bg-black/80 backdrop-blur-sm rounded-full border border-white/20 hover:bg-black/90 hover:border-white/40 transition-all shadow-lg"
+              className="px-6 py-4 bg-black/80 backdrop-blur-sm rounded-full border border-white/20 hover:bg-black/90 hover:border-white/40 transition-all shadow-lg flex flex-col items-center justify-center gap-2"
               aria-label="About"
             >
-              <span className="text-white text-base font-medium">About</span>
+              <span className="text-white text-2xl font-medium">About</span>
+              {/* SVG Icon - Below text */}
+              <div className="relative w-32 h-32 flex-shrink-0">
+                <Image
+                  src="/icons/about.svg"
+                  alt="About"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </Link>
           }
           gridButton={
