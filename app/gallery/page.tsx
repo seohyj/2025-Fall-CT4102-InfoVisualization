@@ -115,32 +115,31 @@ function GalleryContent() {
         </div>
       </header>
 
-      {/* Year Slider */}
-      <YearSlider
-        minYear={2009}
-        maxYear={2025}
-        currentYear={selectedYear}
-        onYearChange={setSelectedYear}
-      />
-
       {/* Main Content */}
       <div className="h-[calc(100vh-73px)] flex flex-col md:flex-row">
         {/* Left Panel - Stats Chart */}
-        <div className="w-full md:w-[35%] lg:w-[30%] p-8 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-white/10 bg-black/50 flex-shrink-0">
-          <div className="h-full flex flex-col">
+        <div className="w-full md:w-[35%] lg:w-[30%] p-8 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-white/10 bg-black/50 flex-shrink-0 flex flex-col">
+          <div className="flex-shrink-0">
             <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">
               {selectedCategory}
             </h2>
-            <p className="text-white/60 text-base mb-4 md:mb-6">
-              Year: {selectedYear}
-            </p>
-            <div className="flex-1 min-h-0" style={{ minHeight: "300px" }}>
-              <StatsChart
-                stats={stats}
-                selectedStatus={selectedStatus}
-                onStatusClick={setSelectedStatus}
-              />
-            </div>
+          </div>
+          <div className="flex-1 min-h-0" style={{ minHeight: "300px" }}>
+            <StatsChart
+              stats={stats}
+              selectedStatus={selectedStatus}
+              onStatusClick={setSelectedStatus}
+            />
+          </div>
+          {/* Year Slider - Horizontal below chart */}
+          <div className="flex-shrink-0 mt-6">
+            <YearSlider
+              minYear={2009}
+              maxYear={2025}
+              currentYear={selectedYear}
+              onYearChange={setSelectedYear}
+              orientation="horizontal"
+            />
           </div>
         </div>
 
