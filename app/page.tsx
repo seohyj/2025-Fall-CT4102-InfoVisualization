@@ -124,50 +124,63 @@ function HomeContent() {
           mapboxToken={mapboxToken}
         />
 
-        {/* Title */}
-        <div className="absolute top-8 md:top-12 left-8 md:left-12 z-30">
-          <h1 className="text-6xl font-light text-white drop-shadow-lg mb-2 tracking-tight">
-            The Spectrum of
-          </h1>
-          <h2 className="text-6xl font-bold text-white drop-shadow-lg tracking-tight">
-            Extinction
-          </h2>
+        {/* Title - Left Anchor */}
+        <div className="fixed top-8 left-10 z-50">
+          <div className="flex flex-col">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white drop-shadow-lg mb-1 tracking-tight leading-tight">
+              The Spectrum of
+            </h1>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white drop-shadow-lg tracking-tight leading-tight">
+              Extinction
+            </h2>
+          </div>
         </div>
 
-        {/* Category Tabs */}
-        <CategoryTabs
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategorySelect={(category) => {
-            setSelectedCategory(category);
-          }}
-          aboutButton={
+        {/* Unified Navigation Bar - Center Anchor */}
+        <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
+          <div className="bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-3 md:px-6 py-2.5 md:py-3 flex items-center gap-3 md:gap-6 shadow-2xl">
+            {/* About Icon Button */}
             <Link
               href="/about"
-              className="px-6 py-4 bg-black/40 backdrop-blur-md rounded-full hover:bg-black/50 transition-all shadow-lg flex flex-col items-center justify-center gap-2 z-10"
+              className="w-9 h-9 md:w-12 md:h-12 flex items-center justify-center transition-all hover:opacity-80 hover:scale-110 rounded-full flex-shrink-0"
               aria-label="About"
+              title="About"
             >
-              <span className="text-white text-2xl font-medium">About</span>
-              {/* SVG Icon - Below text */}
-              <div className="relative w-32 h-32 flex-shrink-0">
-                <Image
-                  src="/icons/about.svg"
-                  alt="About"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+              <Image
+                src="/icons/about.svg"
+                alt="About"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+              />
             </Link>
-          }
-          gridButton={
-            <ViewToggleBtn
+
+            {/* Divider */}
+            <div className="w-px h-6 md:h-8 bg-white/20 flex-shrink-0"></div>
+
+            {/* Category Tabs */}
+            <CategoryTabs
+              categories={categories}
               selectedCategory={selectedCategory}
-              selectedYear={selectedYear}
-              isVisible={selectedCategory !== null}
+              onCategorySelect={(category) => {
+                setSelectedCategory(category);
+              }}
             />
-          }
-        />
+
+            {/* Conditional Divider - Only show when More About is visible */}
+            {selectedCategory !== null && (
+              <>
+                <div className="w-px h-6 md:h-8 bg-white/20 flex-shrink-0"></div>
+                {/* More About Icon Button */}
+                <ViewToggleBtn
+                  selectedCategory={selectedCategory}
+                  selectedYear={selectedYear}
+                  isVisible={selectedCategory !== null}
+                />
+              </>
+            )}
+          </div>
+        </nav>
 
         {/* Year Slider */}
         <YearSlider

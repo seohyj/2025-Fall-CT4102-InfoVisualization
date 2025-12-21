@@ -53,20 +53,17 @@ export default function ViewToggleBtn({
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
-      className="px-6 py-4 bg-black/60 backdrop-blur-md rounded-full hover:bg-black/70 transition-all shadow-lg flex flex-col items-center justify-center gap-2"
+      className="w-9 h-9 md:w-12 md:h-12 flex items-center justify-center transition-all hover:opacity-80 rounded-full flex-shrink-0"
       aria-label="More about"
+      title="More About"
     >
-      <span className="text-white text-2xl font-medium">More About</span>
-      {/* SVG Icon - Below text */}
-      <div className="relative w-32 h-32 flex-shrink-0">
-        <Image
-          src={iconSrc}
-          alt="More about"
-          width={128}
-          height={128}
-          className="w-full h-full object-contain"
-        />
-      </div>
+      <Image
+        src={iconSrc}
+        alt="More about"
+        width={48}
+        height={48}
+        className="w-full h-full object-contain"
+      />
       <span className="sr-only">More about</span>
     </motion.button>
   );
