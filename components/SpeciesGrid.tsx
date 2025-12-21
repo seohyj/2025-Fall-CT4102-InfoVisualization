@@ -36,7 +36,7 @@ export default function SpeciesGrid({
 
   return (
     <div className="w-full h-full overflow-y-auto">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {filteredSpecies.map((s, index) => {
           const status = getSpeciesStatusAtYear(s, selectedYear);
           const statusColor = getStatusColor(status);
@@ -47,7 +47,7 @@ export default function SpeciesGrid({
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.02 }}
-              className="group relative aspect-square rounded-lg overflow-hidden cursor-pointer bg-gray-900 border border-white/10 hover:border-white/30 transition-all"
+              className="group relative aspect-square rounded-lg overflow-hidden cursor-pointer bg-gray-900 border border-white/10 hover:border-white/30 hover:-translate-y-1 transition-all duration-300"
               onClick={() => onSpeciesClick(s)}
             >
               {/* Image */}
@@ -57,7 +57,7 @@ export default function SpeciesGrid({
                     src={s.imageUrl}
                     alt={s.commonName}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                 </div>

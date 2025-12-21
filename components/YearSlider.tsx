@@ -125,7 +125,7 @@ export default function YearSlider({
 
   // Vertical layout (default)
   return (
-    <div className="absolute right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center">
+    <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center bg-black/60 backdrop-blur-md rounded-lg px-4 md:px-6 py-4 border border-white/10">
       {/* Year Display */}
       <motion.div
         className="mb-4 text-5xl font-bold text-white drop-shadow-lg"

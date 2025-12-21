@@ -40,36 +40,36 @@ export default function CategoryTabs({
   gridButton,
 }: CategoryTabsProps) {
   return (
-    <div className="absolute top-20 left-1/2 -translate-x-1/2 z-20">
-      <div className="flex items-center gap-4">
+    <div className="absolute top-24 md:top-28 left-1/2 -translate-x-1/2 z-20 px-4">
+      <div className="flex items-center gap-3 md:gap-4">
         {aboutButton}
-        <div className="flex gap-3 bg-black/60 backdrop-blur-sm rounded-full px-6 py-3 border border-white/10">
+        <div className="flex gap-3 bg-black/60 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/10">
           {/* All Categories Button */}
           <button
             onClick={() => onCategorySelect(null)}
-            className={`px-6 py-4 rounded-full text-2xl font-medium transition-all relative flex flex-col items-center justify-center gap-2 ${
+            className={`px-4 md:px-6 py-3 md:py-4 rounded-2xl text-2xl font-medium transition-all relative flex flex-col items-center justify-center gap-2 ${
               selectedCategory === null
-                ? "bg-white text-black"
+                ? "bg-white/20 text-white border border-white/30"
                 : "text-white/70 hover:text-white hover:bg-white/10"
             }`}
           >
             <span className="block text-2xl leading-tight">All</span>
-            {/* SVG Icon - Below text */}
-            <div className="relative w-32 h-32 flex-shrink-0">
+            {/* Globe Icon - Below text - Normalized size with padding to match SVG icons */}
+            <div className="relative w-24 h-24 md:w-28 md:h-28 flex-shrink-0 p-3 md:p-4">
               <Image
-                src="/icons/all.svg"
+                src="/icons/globe.png"
                 alt="All"
-                width={128}
-                height={128}
+                width={112}
+                height={112}
                 className={`w-full h-full object-contain ${
-                  selectedCategory === null ? "invert" : ""
+                  selectedCategory === null ? "" : "invert"
                 }`}
               />
             </div>
             {selectedCategory === null && (
               <motion.div
                 layoutId="categoryIndicator"
-                className="absolute inset-0 rounded-full bg-white -z-10"
+                className="absolute inset-0 rounded-2xl bg-white/20 border border-white/30 -z-10"
                 initial={false}
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
@@ -83,9 +83,9 @@ export default function CategoryTabs({
               <button
                 key={category}
                 onClick={() => onCategorySelect(category)}
-                className={`px-6 py-4 rounded-full text-2xl font-medium transition-all relative flex flex-col items-center justify-center gap-2 ${
+                className={`px-4 md:px-6 py-3 md:py-4 rounded-2xl text-2xl font-medium transition-all relative flex flex-col items-center justify-center gap-2 ${
                   isSelected
-                    ? "bg-white text-black"
+                    ? "bg-white/20 text-white border border-white/30"
                     : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -95,13 +95,13 @@ export default function CategoryTabs({
                     {CATEGORY_LABELS[category].en}
                   </span>
                 </div>
-                {/* SVG Icon - Below text */}
-                <div className="relative w-32 h-32 flex-shrink-0">
+                {/* SVG Icon - Below text - Normalized size to match globe */}
+                <div className="relative w-24 h-24 md:w-28 md:h-28 flex-shrink-0">
                   <Image
                     src={CATEGORY_ICONS[category]}
                     alt={category}
-                    width={128}
-                    height={128}
+                    width={112}
+                    height={112}
                     className={`w-full h-full object-contain ${
                       isSelected ? "invert" : ""
                     }`}
@@ -110,7 +110,7 @@ export default function CategoryTabs({
                 {isSelected && (
                   <motion.div
                     layoutId="categoryIndicator"
-                    className="absolute inset-0 rounded-full bg-white -z-10"
+                    className="absolute inset-0 rounded-2xl bg-white/20 border border-white/30 -z-10"
                     initial={false}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />

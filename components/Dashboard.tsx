@@ -50,7 +50,7 @@ export default function Dashboard({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="absolute inset-0 z-30 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 z-30 bg-black/60 backdrop-blur-md"
         onClick={onClose}
       >
         <motion.div
@@ -75,10 +75,10 @@ export default function Dashboard({
             {/* Left Panel - Stats Chart */}
             <div className="w-full md:w-[35%] lg:w-[30%] p-4 md:p-6 border-b md:border-b-0 md:border-r border-white/10 bg-black/50 flex-shrink-0">
               <div className="h-full flex flex-col">
-                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white tracking-tight">
                   {selectedCategory}
                 </h2>
-                <p className="text-white/60 text-base mb-4 md:mb-6">
+                <p className="text-white/60 text-base mb-4 md:mb-6 leading-relaxed">
                   Year: {selectedYear}
                 </p>
                 <div className="flex-1 min-h-0" style={{ minHeight: "300px" }}>
@@ -94,10 +94,10 @@ export default function Dashboard({
             {/* Right Panel - Photo Grid */}
             <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
               <div className="p-4 md:p-6 border-b border-white/10 flex-shrink-0">
-                <h3 className="text-xl md:text-2xl font-semibold text-white mb-1">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-1 tracking-tight">
                   Species Gallery
                 </h3>
-                <p className="text-white/60 text-sm md:text-base">
+                <p className="text-white/60 text-sm md:text-base leading-relaxed">
                   {categorySpecies.length} species found
                   {selectedStatus && ` • Filtered by ${selectedStatus}`}
                 </p>

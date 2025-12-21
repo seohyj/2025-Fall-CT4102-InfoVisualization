@@ -13,7 +13,7 @@ export const EXTINCTION_COLORS = {
   VU: "#E9692C", // Vulnerable - Orange
   EN: "#C42F40", // Endangered - Dark Red
   CR: "#3A3A3A", // Critically Endangered - Dark Grey
-  EW: "#A4A4A4", // Extinct in the Wild - Grey
+  EW: "#C0C0C0", // Extinct in the Wild - Light Grey (brightened for better contrast)
   EX: "#EFEFEF", // Extinct - Light Grey
 } as const;
 

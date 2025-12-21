@@ -83,7 +83,7 @@ function GalleryContent() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-white/90 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-white text-black rounded-lg font-semibold hover:bg-white/90 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Map</span>
@@ -115,12 +115,12 @@ function GalleryContent() {
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             href={backUrl}
-            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+            className="flex items-center gap-2 px-6 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/10"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Map</span>
           </Link>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold tracking-tight">
             {selectedCategory && CATEGORY_LABELS[selectedCategory]
               ? `${CATEGORY_LABELS[selectedCategory].en} (${CATEGORY_LABELS[selectedCategory].ko})`
               : selectedCategory}
@@ -132,9 +132,9 @@ function GalleryContent() {
       {/* Main Content */}
       <div className="h-[calc(100vh-73px)] flex flex-col md:flex-row">
         {/* Left Panel - Stats Chart */}
-        <div className="w-full md:w-[35%] lg:w-[30%] p-8 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-white/10 bg-black/50 flex-shrink-0 flex flex-col">
+        <div className="w-full md:w-[35%] lg:w-[30%] p-6 md:p-8 lg:p-10 border-b md:border-b-0 md:border-r border-white/10 bg-black/50 flex-shrink-0 flex flex-col">
           <div className="flex-shrink-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white tracking-tight">
               {selectedCategory && CATEGORY_LABELS[selectedCategory]
                 ? `${CATEGORY_LABELS[selectedCategory].en} (${CATEGORY_LABELS[selectedCategory].ko})`
                 : selectedCategory}
@@ -161,16 +161,16 @@ function GalleryContent() {
 
         {/* Right Panel - Photo Grid */}
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-          <div className="p-8 md:p-10 lg:p-12 border-b border-white/10 flex-shrink-0">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2">
+          <div className="p-6 md:p-8 lg:p-10 border-b border-white/10 flex-shrink-0">
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2 tracking-tight">
               Species Gallery
             </h3>
-            <p className="text-white/60 text-base md:text-lg">
+            <p className="text-white/60 text-base md:text-lg leading-relaxed">
               {categorySpecies.length} species found
               {selectedStatus && ` • Filtered by ${selectedStatus}`}
             </p>
           </div>
-          <div className="flex-1 min-h-0 overflow-hidden px-8 md:px-10 lg:px-12 pb-8 md:pb-10 lg:pb-12">
+          <div className="flex-1 min-h-0 overflow-hidden px-6 md:px-8 lg:px-10 pb-6 md:pb-8 lg:pb-10">
             <SpeciesGrid
               species={categorySpecies}
               selectedYear={selectedYear}

@@ -52,7 +52,7 @@ export default function StatsChart({
 
   return (
     <div className="w-full h-full flex flex-col">
-      <h3 className="text-2xl font-bold mb-4 text-white">
+      <h3 className="text-2xl font-bold mb-4 text-white tracking-tight">
         Status Distribution
       </h3>
       <ResponsiveContainer width="100%" height="100%">

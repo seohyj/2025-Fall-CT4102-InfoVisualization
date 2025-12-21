@@ -71,24 +71,24 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+            className="flex items-center gap-2 px-6 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/10"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Map</span>
           </Link>
-          <h1 className="text-2xl font-bold">About</h1>
+          <h1 className="text-2xl font-bold tracking-tight">About</h1>
           <div className="w-24"></div>
         </div>
       </header>
 
       {/* Content */}
-      <main className="container mx-auto px-6 py-12 max-w-4xl">
+      <main className="container mx-auto px-6 md:px-8 py-12 md:py-16 max-w-4xl">
         {/* What is IUCN Red List */}
         <section className="mb-12">
-          <h2 className="text-5xl font-bold mb-6">
+          <h2 className="text-5xl font-bold mb-6 tracking-tight">
             What is the IUCN Red List?
           </h2>
-          <div className="space-y-4 text-2xl text-white/80 leading-relaxed">
+          <div className="space-y-4 text-lg md:text-xl text-white/80 leading-relaxed">
             <p>
               IUCN 적색목록(IUCN Red List of Threatened Species)은 전 세계 생물
               종의 보전 상태를 평가한 가장 포괄적인 목록입니다. 정량적 기준을
@@ -113,7 +113,7 @@ export default function AboutPage() {
 
         {/* Status Categories Guide */}
         <section className="mb-12">
-          <h2 className="text-5xl font-bold mb-8">Status Categories Guide</h2>
+          <h2 className="text-5xl font-bold mb-8 tracking-tight">Status Categories Guide</h2>
           <div className="space-y-6">
             {STATUS_INFO.map((status) => (
               <div
@@ -128,13 +128,13 @@ export default function AboutPage() {
                     {status.code}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-3xl font-semibold mb-2">
+                    <h3 className="text-3xl font-semibold mb-2 tracking-tight">
                       {status.label}
                     </h3>
-                    <p className="text-xl text-white/60 mb-3 italic">
+                    <p className="text-lg md:text-xl text-white/60 mb-3 italic leading-relaxed">
                       {status.labelKo}
                     </p>
-                    <p className="text-xl text-white/70 leading-relaxed">
+                    <p className="text-base md:text-lg text-white/70 leading-relaxed">
                       {status.description}
                     </p>
                   </div>
@@ -146,9 +146,9 @@ export default function AboutPage() {
 
         {/* Global Overview */}
         <section className="mb-12">
-          <h2 className="text-5xl font-bold mb-6">Global Overview</h2>
+          <h2 className="text-5xl font-bold mb-6 tracking-tight">Global Overview</h2>
           <div className="border border-white/10 rounded-lg p-8 bg-black/50">
-            <div className="space-y-4 text-2xl text-white/80 leading-relaxed">
+            <div className="space-y-4 text-lg md:text-xl text-white/80 leading-relaxed">
               <p>
                 이 시각화는 IUCN 적색목록의 데이터를 기반으로 하며, 다양한
                 분류군과 시간에 따른 종의 보전 상태를 보여줍니다. 인터랙티브
@@ -179,8 +179,8 @@ export default function AboutPage() {
         {/* Link to IUCN */}
         <section className="mb-12">
           <div className="border border-white/20 rounded-lg p-8 bg-gradient-to-br from-black/80 to-black/50">
-            <h2 className="text-4xl font-bold mb-4">더 알아보기</h2>
-            <p className="text-2xl text-white/70 mb-6">
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">더 알아보기</h2>
+            <p className="text-lg md:text-xl text-white/70 mb-6 leading-relaxed">
               종합적인 종 평가와 상세한 보전 정보는 공식 IUCN 적색목록
               웹사이트를 방문하세요.
             </p>
@@ -188,7 +188,7 @@ export default function AboutPage() {
               href="https://www.iucnredlist.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-lg font-semibold text-lg hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-2 bg-white text-black rounded-lg font-semibold text-lg hover:bg-white/90 transition-colors"
             >
               <span>IUCN 적색목록 방문</span>
               <ExternalLink className="w-6 h-6" />

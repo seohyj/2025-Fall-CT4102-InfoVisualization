@@ -75,7 +75,7 @@ export default function DetailModal({
         onClick={onClose}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
 
         {/* Modal Content */}
         <motion.div
@@ -83,7 +83,7 @@ export default function DetailModal({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-6xl h-[90vh] bg-black border border-white/20 rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row"
+          className="relative w-full max-w-6xl h-[90vh] bg-black/60 backdrop-blur-md border border-white/10 rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -127,14 +127,14 @@ export default function DetailModal({
           </div>
 
           {/* Right Panel - Content */}
-          <div className="w-full md:w-1/2 flex flex-col overflow-y-auto bg-black">
+          <div className="w-full md:w-1/2 flex flex-col overflow-y-auto bg-black/60 backdrop-blur-md">
             <div className="p-6 md:p-8 space-y-6">
               {/* Header */}
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
                   {species.commonName}
                 </h1>
-                <p className="text-xl md:text-2xl text-white/60 italic">
+                <p className="text-xl md:text-2xl text-white/60 italic leading-relaxed">
                   {species.scientificName}
                 </p>
               </div>
@@ -184,10 +184,10 @@ export default function DetailModal({
               {/* Narrative */}
               {species.description && (
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">
+                  <h3 className="text-lg font-semibold text-white mb-3 tracking-tight">
                     Why is this species disappearing?
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
+                  <p className="text-white/70 leading-relaxed text-base">
                     {species.description}
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export default function DetailModal({
                   href={species.iucnUrl || "https://www.iucnredlist.org"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/20 rounded-lg text-white hover:bg-white/10 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-2 border-2 border-white/20 rounded-lg text-white hover:bg-white/10 transition-colors"
                 >
                   <span>Check out more at IUCN Red List</span>
                   <ExternalLink className="w-4 h-4" />

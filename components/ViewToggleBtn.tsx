@@ -53,7 +53,7 @@ export default function ViewToggleBtn({
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
-      className="px-6 py-4 bg-black/80 backdrop-blur-sm rounded-full border border-white/20 hover:bg-black/90 hover:border-white/40 transition-all shadow-lg flex flex-col items-center justify-center gap-2"
+      className="px-6 py-4 bg-black/60 backdrop-blur-md rounded-full hover:bg-black/70 transition-all shadow-lg flex flex-col items-center justify-center gap-2"
       aria-label="More about"
     >
       <span className="text-white text-2xl font-medium">More About</span>

@@ -91,7 +91,7 @@ function HomeContent() {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-center bg-black/80 p-8 rounded-lg border border-white/10">
+          <div className="text-center bg-black/60 backdrop-blur-md p-8 rounded-lg border border-white/10">
             <h2 className="text-2xl font-bold mb-4">Mapbox Token Required</h2>
             <p className="text-gray-400 mb-4">
               Please set your Mapbox access token in the environment variables.
@@ -125,12 +125,12 @@ function HomeContent() {
         />
 
         {/* Title */}
-        <div className="absolute top-12 left-12 z-20">
-          <h1 className="text-6xl font-bold text-white drop-shadow-lg mb-2">
-            The Spectrum
+        <div className="absolute top-8 md:top-12 left-8 md:left-12 z-30">
+          <h1 className="text-6xl font-light text-white drop-shadow-lg mb-2 tracking-tight">
+            The Spectrum of
           </h1>
-          <h2 className="text-4xl font-light text-white/90 drop-shadow-lg">
-            of Extinction
+          <h2 className="text-6xl font-bold text-white drop-shadow-lg tracking-tight">
+            Extinction
           </h2>
         </div>
 
@@ -144,7 +144,7 @@ function HomeContent() {
           aboutButton={
             <Link
               href="/about"
-              className="px-6 py-4 bg-black/80 backdrop-blur-sm rounded-full border border-white/20 hover:bg-black/90 hover:border-white/40 transition-all shadow-lg flex flex-col items-center justify-center gap-2"
+              className="px-6 py-4 bg-black/40 backdrop-blur-md rounded-full hover:bg-black/50 transition-all shadow-lg flex flex-col items-center justify-center gap-2 z-10"
               aria-label="About"
             >
               <span className="text-white text-2xl font-medium">About</span>
@@ -179,7 +179,7 @@ function HomeContent() {
 
         {/* Info Overlay (Bottom Left) - Only show when no category selected */}
         {!selectedCategory && (
-          <div className="absolute bottom-8 left-8 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-6 border border-white/10 max-w-sm">
+          <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 z-20 bg-black/60 backdrop-blur-md rounded-lg p-6 md:p-8 border border-white/10 max-w-sm">
             <div className="text-xl text-white/80 space-y-2">
               <div>
                 <span className="font-semibold">Year:</span> {selectedYear}
