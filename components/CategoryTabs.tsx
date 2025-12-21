@@ -49,43 +49,40 @@ export default function CategoryTabs({
       */}
       <button
         onClick={() => onCategorySelect(null)}
-        className={`w-9 h-9 md:w-12 md:h-12 rounded-full transition-all relative flex items-center justify-center hover:scale-110 flex-shrink-0 ${
-          selectedCategory === null
-            ? "bg-white/20 ring-2 ring-white/30"
-            : "hover:bg-white/10"
-        }`}
+        className="w-14 md:w-16 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-1.5"
         title="All"
       >
+        {/* Sliding Pill Background */}
+        {selectedCategory === null && (
+          <motion.div
+            layoutId="categoryIndicator"
+            className="absolute inset-0 rounded-xl bg-white/10 -z-10"
+            initial={false}
+            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+          />
+        )}
+
         {/* 지구본 아이콘 컨테이너 */}
-        <div className="relative w-full h-full flex-shrink-0 p-1 md:p-1.5">
+        <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0 p-1 md:p-1.5">
           <Image
             src="/icons/globe.png"
             alt="All"
             width={48}
             height={48}
-            className={`
-              w-full h-full         /* 컨테이너 크기에 맞춤 */
-              object-contain        /* 비율 유지하며 컨테이너에 맞춤 */
-              ${
-                selectedCategory === null ? "" : "invert"
-              }  /* 선택되지 않았을 때 색상 반전 */
-            `}
+            className={`w-full h-full object-contain ${
+              selectedCategory === null ? "" : "invert"
+            }`}
           />
         </div>
 
-        {/* 
-          선택된 상태 표시 애니메이션 (배경 하이라이트)
-          - bg-white/20: 배경색 (흰색 20%)
-          - border border-white/30: 테두리 (흰색 30% 투명도)
-        */}
-        {selectedCategory === null && (
-          <motion.div
-            layoutId="categoryIndicator"
-            className="absolute inset-0 rounded-full bg-white/20 ring-2 ring-white/30 -z-10"
-            initial={false}
-            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-          />
-        )}
+        {/* Text Label */}
+        <span
+          className={`text-[10px] md:text-xs font-medium leading-tight ${
+            selectedCategory === null ? "text-white" : "text-white/70"
+          }`}
+        >
+          All
+        </span>
       </button>
 
       {/* 
@@ -104,15 +101,21 @@ export default function CategoryTabs({
           <button
             key={category}
             onClick={() => onCategorySelect(category)}
-            className={`w-9 h-9 md:w-12 md:h-12 rounded-full transition-all relative flex items-center justify-center hover:scale-110 flex-shrink-0 ${
-              isSelected
-                ? "bg-white/20 ring-2 ring-white/30"
-                : "hover:bg-white/10"
-            }`}
+            className="w-14 md:w-16 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-1.5"
             title={CATEGORY_LABELS[category].en}
           >
+            {/* Sliding Pill Background */}
+            {isSelected && (
+              <motion.div
+                layoutId="categoryIndicator"
+                className="absolute inset-0 rounded-xl bg-white/10 -z-10"
+                initial={false}
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+
             {/* SVG 아이콘 컨테이너 */}
-            <div className="relative w-full h-full flex-shrink-0">
+            <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
               <Image
                 src={CATEGORY_ICONS[category]}
                 alt={category}
@@ -124,19 +127,14 @@ export default function CategoryTabs({
               />
             </div>
 
-            {/* 
-              선택된 상태 표시 애니메이션 (배경 하이라이트)
-              - bg-white/20: 배경색 (흰색 20%)
-              - border border-white/30: 테두리 (흰색 30% 투명도)
-            */}
-            {isSelected && (
-              <motion.div
-                layoutId="categoryIndicator"
-                className="absolute inset-0 rounded-full bg-white/20 ring-2 ring-white/30 -z-10"
-                initial={false}
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
+            {/* Text Label */}
+            <span
+              className={`text-[10px] md:text-xs font-medium leading-tight ${
+                isSelected ? "text-white" : "text-white/70"
+              }`}
+            >
+              {CATEGORY_LABELS[category].en}
+            </span>
           </button>
         );
       })}

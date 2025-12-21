@@ -125,7 +125,7 @@ function HomeContent() {
         />
 
         {/* Title - Left Anchor */}
-        <div className="fixed top-8 left-10 z-50">
+        <div className="fixed top-6 left-8 md:left-10 z-50">
           <div className="flex flex-col">
             <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white drop-shadow-lg mb-1 tracking-tight leading-tight">
               The Spectrum of
@@ -137,22 +137,27 @@ function HomeContent() {
         </div>
 
         {/* Unified Navigation Bar - Center Anchor */}
-        <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-3 md:px-6 py-2.5 md:py-3 flex items-center gap-3 md:gap-6 shadow-2xl">
+        <nav className="fixed top-28 left-1/2 -translate-x-1/2 z-50">
+          <div className="bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-3 md:px-6 py-3 md:py-4 flex items-center gap-3 md:gap-6 shadow-2xl">
             {/* About Icon Button */}
             <Link
               href="/about"
-              className="w-9 h-9 md:w-12 md:h-12 flex items-center justify-center transition-all hover:opacity-80 hover:scale-110 rounded-full flex-shrink-0"
+              className="w-14 md:w-16 flex flex-col items-center justify-center gap-0.5 transition-all hover:scale-105 rounded-full flex-shrink-0 py-1.5"
               aria-label="About"
               title="About"
             >
-              <Image
-                src="/icons/about.svg"
-                alt="About"
-                width={48}
-                height={48}
-                className="w-full h-full object-contain"
-              />
+              <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+                <Image
+                  src="/icons/about.svg"
+                  alt="About"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="text-[10px] md:text-xs font-medium leading-tight text-white/70">
+                About
+              </span>
             </Link>
 
             {/* Divider */}
@@ -167,18 +172,15 @@ function HomeContent() {
               }}
             />
 
-            {/* Conditional Divider - Only show when More About is visible */}
-            {selectedCategory !== null && (
-              <>
-                <div className="w-px h-6 md:h-8 bg-white/20 flex-shrink-0"></div>
-                {/* More About Icon Button */}
-                <ViewToggleBtn
-                  selectedCategory={selectedCategory}
-                  selectedYear={selectedYear}
-                  isVisible={selectedCategory !== null}
-                />
-              </>
-            )}
+            {/* Divider - Always rendered to maintain layout */}
+            <div className="w-px h-6 md:h-8 bg-white/20 flex-shrink-0"></div>
+
+            {/* More About Icon Button - Always rendered, visibility controlled by opacity */}
+            <ViewToggleBtn
+              selectedCategory={selectedCategory}
+              selectedYear={selectedYear}
+              isVisible={selectedCategory !== null}
+            />
           </div>
         </nav>
 

@@ -28,8 +28,6 @@ export default function ViewToggleBtn({
 }: ViewToggleBtnProps) {
   const router = useRouter();
 
-  if (!isVisible) return null;
-
   const handleClick = () => {
     if (selectedCategory) {
       // Navigate to gallery page with query parameters
@@ -41,29 +39,42 @@ export default function ViewToggleBtn({
   };
 
   // Determine which icon to show
-  const iconSrc = selectedCategory
-    ? CATEGORY_ICONS[selectedCategory]
-    : "/icons/document.svg";
+  const iconSrc = selectedCategory ? CATEGORY_ICONS[selectedCategory] : null;
 
   return (
     <motion.button
       initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.8 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      animate={{
+        opacity: isVisible ? 1 : 0,
+        scale: isVisible ? 1 : 0.8,
+      }}
+      whileHover={isVisible ? { scale: 1.05 } : {}}
+      whileTap={isVisible ? { scale: 0.95 } : {}}
       onClick={handleClick}
-      className="w-9 h-9 md:w-12 md:h-12 flex items-center justify-center transition-all hover:opacity-80 rounded-full flex-shrink-0"
+      className={`w-14 md:w-16 flex flex-col items-center justify-center gap-0.5 transition-all rounded-full flex-shrink-0 py-1.5 ${
+        isVisible ? "pointer-events-auto" : "pointer-events-none"
+      }`}
       aria-label="More about"
       title="More About"
     >
-      <Image
-        src={iconSrc}
-        alt="More about"
-        width={48}
-        height={48}
-        className="w-full h-full object-contain"
-      />
+      {iconSrc && (
+        <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+          <Image
+            src={iconSrc}
+            alt="More about"
+            width={48}
+            height={48}
+            className="w-full h-full object-contain"
+          />
+        </div>
+      )}
+      <span
+        className={`text-[10px] md:text-xs font-medium leading-tight ${
+          isVisible ? "text-white/70" : "text-transparent"
+        }`}
+      >
+        More
+      </span>
       <span className="sr-only">More about</span>
     </motion.button>
   );

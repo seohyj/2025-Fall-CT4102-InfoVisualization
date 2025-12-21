@@ -125,10 +125,10 @@ export default function YearSlider({
 
   // Vertical layout (default)
   return (
-    <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center bg-black/60 backdrop-blur-md rounded-lg px-4 md:px-6 py-4 border border-white/10">
-      {/* Year Display */}
+    <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-3 md:px-4 py-4 shadow-2xl w-16 md:w-20">
+      {/* Year Display - Top */}
       <motion.div
-        className="mb-4 text-5xl font-bold text-white drop-shadow-lg"
+        className="mb-3 text-lg font-bold text-white drop-shadow-lg tracking-tight"
         animate={{ scale: isDragging ? 1.1 : 1 }}
         transition={{ duration: 0.2 }}
       >
@@ -138,11 +138,11 @@ export default function YearSlider({
       {/* Vertical Slider Container */}
       <div
         ref={sliderRef}
-        className="relative h-[400px] w-12 flex flex-col items-center cursor-pointer"
+        className="relative h-[50vh] max-h-[500px] min-h-[250px] w-2 flex flex-col items-center cursor-pointer"
         onMouseDown={handleMouseDown}
       >
         {/* Track */}
-        <div className="absolute h-full w-1 bg-gray-800 rounded-full" />
+        <div className="absolute h-full w-1 bg-white/20 rounded-full" />
 
         {/* Filled Track */}
         <motion.div
@@ -155,7 +155,7 @@ export default function YearSlider({
 
         {/* Thumb */}
         <motion.div
-          className="absolute w-4 h-4 bg-white rounded-full shadow-lg z-10"
+          className="absolute w-3 h-3 bg-white rounded-full shadow-lg z-10"
           style={{
             bottom: `${percentage}%`,
             transform: "translateY(50%)",
@@ -165,18 +165,11 @@ export default function YearSlider({
           }}
           transition={{ duration: 0.2 }}
         />
-
-        {/* Year Labels */}
-        <div className="absolute inset-0 flex flex-col justify-between text-sm text-gray-400 pointer-events-none">
-          <span>{maxYear}</span>
-          <span className="opacity-0">{minYear}</span>
-          <span>{minYear}</span>
-        </div>
       </div>
 
-      {/* Year Range Label */}
-      <div className="mt-4 text-sm text-gray-500">
-        {minYear} - {maxYear}
+      {/* Start Year Label - Bottom */}
+      <div className="mt-3 text-xs text-white/50 font-medium">
+        {minYear}
       </div>
     </div>
   );
