@@ -14,13 +14,13 @@ import { SpeciesData, Category, Species } from "@/lib/types";
 import Image from "next/image";
 
 const MIN_YEAR = 2009;
-const MAX_YEAR = 2025;
+const MAX_YEAR = 2024;
 
 function HomeContent() {
   const searchParams = useSearchParams();
   const [data, setData] = useState<SpeciesData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState(2025);
+  const [selectedYear, setSelectedYear] = useState(2024);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null
   );
@@ -128,10 +128,10 @@ function HomeContent() {
         {/* Title - Compact Logo */}
         <div className="fixed top-6 left-6 md:left-8 z-50">
           <div className="flex flex-col leading-none">
-            <h1 className="text-lg md:text-xl lg:text-2xl font-light text-white drop-shadow-lg tracking-tight">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-light text-white drop-shadow-lg tracking-tight">
               The Spectrum of
             </h1>
-            <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white drop-shadow-lg tracking-tight">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg tracking-tight">
               Extinction
             </h2>
           </div>
@@ -139,30 +139,30 @@ function HomeContent() {
 
         {/* Unified Navigation Bar - Center Anchor */}
         <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-3 md:px-6 py-3 md:py-4 flex items-center gap-3 md:gap-6 shadow-2xl">
+          <div className="bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-4 md:px-8 py-4 md:py-5 flex items-center gap-4 md:gap-8 shadow-2xl">
             {/* About Icon Button */}
             <Link
               href="/about"
-              className="w-14 md:w-16 flex flex-col items-center justify-center gap-0.5 transition-all hover:scale-105 rounded-full flex-shrink-0 py-1.5"
+              className="w-[84px] md:w-24 flex flex-col items-center justify-center gap-0.5 transition-all hover:scale-105 rounded-full flex-shrink-0 py-2"
               aria-label="About"
               title="About"
             >
-              <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+              <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0">
                 <Image
                   src="/icons/about.svg"
                   alt="About"
-                  width={48}
-                  height={48}
+                  width={72}
+                  height={72}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-[10px] md:text-xs font-medium leading-tight text-white/70">
+              <span className="text-[40px] md:text-base font-medium leading-tight text-white/70">
                 About
               </span>
             </Link>
 
             {/* Divider */}
-            <div className="w-px h-6 md:h-8 bg-white/20 flex-shrink-0"></div>
+            <div className="w-px h-9 md:h-12 bg-white/20 flex-shrink-0"></div>
 
             {/* Category Tabs */}
             <CategoryTabs
@@ -174,7 +174,7 @@ function HomeContent() {
             />
 
             {/* Divider - Always rendered to maintain layout */}
-            <div className="w-px h-6 md:h-8 bg-white/20 flex-shrink-0"></div>
+            <div className="w-px h-9 md:h-12 bg-white/20 flex-shrink-0"></div>
 
             {/* More About Icon Button - Always rendered, visibility controlled by opacity */}
             <ViewToggleBtn

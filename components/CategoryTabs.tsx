@@ -49,7 +49,7 @@ export default function CategoryTabs({
       */}
       <button
         onClick={() => onCategorySelect(null)}
-        className="w-14 md:w-16 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-1.5"
+        className="w-[84px] md:w-24 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-2"
         title="All"
       >
         {/* Sliding Pill Background */}
@@ -63,19 +63,19 @@ export default function CategoryTabs({
         )}
 
         {/* 지구본 아이콘 컨테이너 */}
-        <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0 p-1 md:p-1.5">
+        <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0 p-1.5 md:p-2">
           <Image
             src="/icons/globe.png"
             alt="All"
-            width={48}
-            height={48}
+            width={72}
+            height={72}
             className="w-full h-full object-contain invert"
           />
         </div>
 
         {/* Text Label */}
         <span
-          className={`text-[10px] md:text-xs font-medium leading-tight ${
+          className={`text-[40px] md:text-base font-medium leading-tight ${
             selectedCategory === null ? "text-white" : "text-white/70"
           }`}
         >
@@ -104,7 +104,7 @@ export default function CategoryTabs({
           <button
             key={category}
             onClick={() => onCategorySelect(category)}
-            className="w-14 md:w-16 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-1.5"
+            className="w-[84px] md:w-24 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-2"
             title={categoryLabel.en}
           >
             {/* Sliding Pill Background */}
@@ -118,19 +118,19 @@ export default function CategoryTabs({
             )}
 
             {/* SVG 아이콘 컨테이너 */}
-            <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+            <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0">
               <Image
                 src={CATEGORY_ICONS[category] || "/icons/all.svg"}
                 alt={category}
-                width={48}
-                height={48}
+                width={72}
+                height={72}
                 className="w-full h-full object-contain"
               />
             </div>
 
             {/* Text Label */}
             <span
-              className={`text-[10px] md:text-xs font-medium leading-tight ${
+              className={`text-[40px] md:text-base font-medium leading-tight ${
                 isSelected ? "text-white" : "text-white/70"
               }`}
             >

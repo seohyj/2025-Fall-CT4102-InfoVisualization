@@ -75,7 +75,7 @@ export default function SpeciesGrid({
                   {s.commonName}
                 </h4>
                 <p className="text-white/70 text-xs italic mb-2">
-                  {s.scientificName}
+                  {s.scientificName || s.commonName}
                 </p>
                 <div
                   className="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-white"

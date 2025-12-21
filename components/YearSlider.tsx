@@ -111,12 +111,12 @@ export default function YearSlider({
               }}
               transition={{ duration: 0.2 }}
             />
-
-            {/* Year Labels */}
-            <div className="absolute inset-0 flex justify-between items-center text-sm text-gray-400 pointer-events-none">
-              <span>{minYear}</span>
-              <span>{maxYear}</span>
-            </div>
+          </div>
+          
+          {/* Year Labels - Below the slider */}
+          <div className="flex justify-between items-center text-base md:text-lg text-gray-400 pointer-events-none mt-2 px-1">
+            <span>{minYear}</span>
+            <span>{maxYear}</span>
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function YearSlider({
       </div>
 
       {/* Start Year Label - Bottom */}
-      <div className="mt-3 text-xs text-white/50 font-medium">
+      <div className="mt-3 text-base md:text-lg text-white/50 font-medium">
         {minYear}
       </div>
     </div>

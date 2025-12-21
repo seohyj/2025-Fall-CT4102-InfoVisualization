@@ -89,41 +89,41 @@ export default function MapComponent({
                 longitude={s.location.lng}
                 latitude={s.location.lat}
               >
-              <div
-                className="relative"
-                onMouseEnter={() => setHoveredSpecies(s)}
-                onMouseLeave={() => setHoveredSpecies(null)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onSpeciesClick?.(s);
-                }}
-              >
                 <div
-                  className="w-3 h-3 rounded-full border-2 border-white transition-all duration-300 hover:scale-150 cursor-pointer"
-                  style={{
-                    backgroundColor: color,
-                    boxShadow: `0 0 8px ${color}80, 0 0 16px ${color}50, 0 0 24px rgba(255, 255, 255, 0.3)`,
+                  className="relative"
+                  onMouseEnter={() => setHoveredSpecies(s)}
+                  onMouseLeave={() => setHoveredSpecies(null)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSpeciesClick?.(s);
                   }}
-                />
-                {/* Tooltip - Clickable */}
-                {isHovered && (
-                  <div 
-                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-black/90 backdrop-blur-sm rounded-lg border border-white/20 whitespace-nowrap z-50 cursor-pointer hover:bg-black/95 transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onSpeciesClick?.(s);
+                >
+                  <div
+                    className="w-3 h-3 rounded-full border-2 border-white transition-all duration-300 hover:scale-150 cursor-pointer"
+                    style={{
+                      backgroundColor: color,
+                      boxShadow: `0 0 8px ${color}80, 0 0 16px ${color}50, 0 0 24px rgba(255, 255, 255, 0.3)`,
                     }}
-                  >
-                    <span className="text-white text-xl font-medium">
-                      {s.commonName}
-                    </span>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
-                      <div className="w-2 h-2 bg-black/90 border-r border-b border-white/20 transform rotate-45"></div>
+                  />
+                  {/* Tooltip - Clickable */}
+                  {isHovered && (
+                    <div
+                      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-black/90 backdrop-blur-sm rounded-lg border border-white/20 whitespace-nowrap z-50 cursor-pointer hover:bg-black/95 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSpeciesClick?.(s);
+                      }}
+                    >
+                      <span className="text-white text-xl font-medium">
+                        {s.commonName}
+                      </span>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+                        <div className="w-2 h-2 bg-black/90 border-r border-b border-white/20 transform rotate-45"></div>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            </Marker>
+                  )}
+                </div>
+              </Marker>
             );
           })}
       </Map>

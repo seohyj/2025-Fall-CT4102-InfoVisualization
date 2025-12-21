@@ -51,25 +51,25 @@ export default function ViewToggleBtn({
       whileHover={isVisible ? { scale: 1.05 } : {}}
       whileTap={isVisible ? { scale: 0.95 } : {}}
       onClick={handleClick}
-      className={`w-14 md:w-16 flex flex-col items-center justify-center gap-0.5 transition-all rounded-full flex-shrink-0 py-1.5 ${
+      className={`w-[84px] md:w-24 flex flex-col items-center justify-center gap-0.5 transition-all rounded-full flex-shrink-0 py-2 ${
         isVisible ? "pointer-events-auto" : "pointer-events-none"
       }`}
       aria-label="More about"
       title="More About"
     >
       {iconSrc && (
-        <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+        <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0">
           <Image
             src={iconSrc}
             alt="More about"
-            width={48}
-            height={48}
+            width={72}
+            height={72}
             className="w-full h-full object-contain"
           />
         </div>
       )}
       <span
-        className={`text-[10px] md:text-xs font-medium leading-tight ${
+        className={`text-[40px] md:text-base font-medium leading-tight ${
           isVisible ? "text-white/70" : "text-transparent"
         }`}
       >

@@ -34,7 +34,7 @@ function GalleryContent() {
   const yearParam = searchParams.get("year");
 
   const [selectedYear, setSelectedYear] = useState(
-    yearParam ? parseInt(yearParam) : 2025
+    yearParam ? parseInt(yearParam) : 2024
   );
   const selectedCategory = categoryParam as Category | null;
 
@@ -151,7 +151,7 @@ function GalleryContent() {
           <div className="flex-shrink-0 mt-6">
             <YearSlider
               minYear={2009}
-              maxYear={2025}
+              maxYear={2024}
               currentYear={selectedYear}
               onYearChange={setSelectedYear}
               orientation="horizontal"

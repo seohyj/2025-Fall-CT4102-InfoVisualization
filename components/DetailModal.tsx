@@ -140,7 +140,7 @@ export default function DetailModal({
                   {species.commonName}
                 </h1>
                 <p className="text-xl md:text-2xl text-white/60 italic leading-relaxed">
-                  {species.scientificName}
+                  {species.scientificName || species.commonName}
                 </p>
               </div>
 
