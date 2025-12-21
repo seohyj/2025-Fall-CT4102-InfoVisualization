@@ -13,6 +13,7 @@ import {
   IUCNStatus,
   Category,
   PopulationTrend,
+  SpeciesStatusHistory,
 } from "../lib/types";
 
 // Sample species names by category
@@ -261,8 +262,8 @@ const THREAT_TYPES = [
 function generateStatusHistory(
   startYear: number = 2009,
   endYear: number = 2025
-): Array<{ year: number; status: IUCNStatus }> {
-  const history: Array<{ year: number; status: IUCNStatus }> = [];
+): SpeciesStatusHistory[] {
+  const history: SpeciesStatusHistory[] = [];
 
   // Random initial status (biased towards more common statuses)
   const initialStatusWeights = [0.3, 0.2, 0.2, 0.15, 0.1, 0.04, 0.01]; // LC, NT, VU, EN, CR, EW, EX

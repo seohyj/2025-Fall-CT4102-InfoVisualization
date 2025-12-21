@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
 
 const ANIMAL_ICONS = [
   "/icons/mammals.svg",
@@ -78,7 +79,7 @@ export default function FloatingAnimals() {
             }}
           >
             <Image
-              src={animal.icon}
+              src={withBasePath(animal.icon)}
               alt="Floating animal"
               width={64}
               height={64}

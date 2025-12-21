@@ -3,6 +3,7 @@
  */
 
 import { Species, SpeciesData, Category, IUCNStatus } from "./types";
+import { withBasePath } from "./basePath";
 
 let cachedData: SpeciesData | null = null;
 
@@ -15,7 +16,7 @@ export async function loadSpeciesData(): Promise<SpeciesData> {
   }
 
   try {
-    const response = await fetch("/data/species_data.json");
+    const response = await fetch(withBasePath("/data/species_data.json"));
     if (!response.ok) {
       throw new Error("Failed to load species data");
     }

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Category } from "@/lib/types";
+import { withBasePath } from "@/lib/basePath";
 
 const CATEGORY_LABELS: Record<Category, { en: string; ko: string }> = {
   Mammals: { en: "Mammals", ko: "포유류" },
@@ -65,7 +66,7 @@ export default function CategoryTabs({
         {/* 지구본 아이콘 컨테이너 */}
         <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0 p-1.5 md:p-2">
           <Image
-            src="/icons/globe.png"
+            src={withBasePath("/icons/globe.png")}
             alt="All"
             width={72}
             height={72}
@@ -120,7 +121,7 @@ export default function CategoryTabs({
             {/* SVG 아이콘 컨테이너 */}
             <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0">
               <Image
-                src={CATEGORY_ICONS[category] || "/icons/all.svg"}
+                src={withBasePath(CATEGORY_ICONS[category] || "/icons/all.svg")}
                 alt={category}
                 width={72}
                 height={72}

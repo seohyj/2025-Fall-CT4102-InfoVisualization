@@ -12,6 +12,7 @@ import ViewToggleBtn from "@/components/ViewToggleBtn";
 import { loadSpeciesData, getCategories, getSpeciesForYear } from "@/lib/data";
 import { SpeciesData, Category, Species } from "@/lib/types";
 import Image from "next/image";
+import { withBasePath } from "@/lib/basePath";
 
 const MIN_YEAR = 2009;
 const MAX_YEAR = 2024;
@@ -149,7 +150,7 @@ function HomeContent() {
             >
               <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0">
                 <Image
-                  src="/icons/about.svg"
+                  src={withBasePath("/icons/about.svg")}
                   alt="About"
                   width={72}
                   height={72}

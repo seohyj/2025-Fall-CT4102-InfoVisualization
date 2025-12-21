@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Category } from "@/lib/types";
+import { withBasePath } from "@/lib/basePath";
 
 const CATEGORY_ICONS: Record<Category, string> = {
   Mammals: "/icons/mammals.svg",
@@ -60,7 +61,7 @@ export default function ViewToggleBtn({
       {iconSrc && (
         <div className="relative w-12 h-12 md:w-[60px] md:h-[60px] flex-shrink-0">
           <Image
-            src={iconSrc}
+            src={withBasePath(iconSrc)}
             alt="More about"
             width={72}
             height={72}
