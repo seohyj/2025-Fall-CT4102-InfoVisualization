@@ -69,9 +69,7 @@ export default function CategoryTabs({
             alt="All"
             width={48}
             height={48}
-            className={`w-full h-full object-contain ${
-              selectedCategory === null ? "" : "invert"
-            }`}
+            className="w-full h-full object-contain invert"
           />
         </div>
 
@@ -97,12 +95,17 @@ export default function CategoryTabs({
       */}
       {categories.map((category) => {
         const isSelected = selectedCategory === category;
+        // Safety check: ensure category exists in CATEGORY_LABELS
+        const categoryLabel = CATEGORY_LABELS[category] || {
+          en: category,
+          ko: category,
+        };
         return (
           <button
             key={category}
             onClick={() => onCategorySelect(category)}
             className="w-14 md:w-16 rounded-full transition-all relative flex flex-col items-center justify-center gap-0.5 hover:scale-105 flex-shrink-0 py-1.5"
-            title={CATEGORY_LABELS[category].en}
+            title={categoryLabel.en}
           >
             {/* Sliding Pill Background */}
             {isSelected && (
@@ -117,13 +120,11 @@ export default function CategoryTabs({
             {/* SVG 아이콘 컨테이너 */}
             <div className="relative w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
               <Image
-                src={CATEGORY_ICONS[category]}
+                src={CATEGORY_ICONS[category] || "/icons/all.svg"}
                 alt={category}
                 width={48}
                 height={48}
-                className={`w-full h-full object-contain ${
-                  isSelected ? "invert" : ""
-                }`}
+                className="w-full h-full object-contain"
               />
             </div>
 
@@ -133,7 +134,7 @@ export default function CategoryTabs({
                 isSelected ? "text-white" : "text-white/70"
               }`}
             >
-              {CATEGORY_LABELS[category].en}
+              {categoryLabel.en}
             </span>
           </button>
         );

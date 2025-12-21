@@ -19,7 +19,7 @@ export async function loadSpeciesData(): Promise<SpeciesData> {
     if (!response.ok) {
       throw new Error("Failed to load species data");
     }
-    cachedData = await response.json();
+    cachedData = (await response.json()) as SpeciesData;
     return cachedData;
   } catch (error) {
     console.error("Error loading species data:", error);

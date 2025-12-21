@@ -9,7 +9,7 @@ import YearSlider from "@/components/YearSlider";
 import CategoryTabs from "@/components/CategoryTabs";
 import DetailModal from "@/components/DetailModal";
 import ViewToggleBtn from "@/components/ViewToggleBtn";
-import { loadSpeciesData, getCategories } from "@/lib/data";
+import { loadSpeciesData, getCategories, getSpeciesForYear } from "@/lib/data";
 import { SpeciesData, Category, Species } from "@/lib/types";
 import Image from "next/image";
 
@@ -122,22 +122,23 @@ function HomeContent() {
           selectedYear={selectedYear}
           selectedCategory={selectedCategory}
           mapboxToken={mapboxToken}
+          onSpeciesClick={setSelectedSpecies}
         />
 
-        {/* Title - Left Anchor */}
-        <div className="fixed top-6 left-8 md:left-10 z-50">
-          <div className="flex flex-col">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-white drop-shadow-lg mb-1 tracking-tight leading-tight">
+        {/* Title - Compact Logo */}
+        <div className="fixed top-6 left-6 md:left-8 z-50">
+          <div className="flex flex-col leading-none">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-light text-white drop-shadow-lg tracking-tight">
               The Spectrum of
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white drop-shadow-lg tracking-tight leading-tight">
+            <h2 className="text-lg md:text-xl lg:text-2xl font-bold text-white drop-shadow-lg tracking-tight">
               Extinction
             </h2>
           </div>
         </div>
 
         {/* Unified Navigation Bar - Center Anchor */}
-        <nav className="fixed top-28 left-1/2 -translate-x-1/2 z-50">
+        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-black/70 backdrop-blur-xl border border-white/10 rounded-full px-3 md:px-6 py-3 md:py-4 flex items-center gap-3 md:gap-6 shadow-2xl">
             {/* About Icon Button */}
             <Link
@@ -192,23 +193,24 @@ function HomeContent() {
           onYearChange={setSelectedYear}
         />
 
-        {/* Info Overlay (Bottom Left) - Only show when no category selected */}
-        {!selectedCategory && (
-          <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 z-20 bg-black/60 backdrop-blur-md rounded-lg p-6 md:p-8 border border-white/10 max-w-sm">
-            <div className="text-xl text-white/80 space-y-2">
-              <div>
-                <span className="font-semibold">Year:</span> {selectedYear}
-              </div>
-              <div>
-                <span className="font-semibold">Category:</span> All
-              </div>
-              <div>
-                <span className="font-semibold">Species:</span>{" "}
-                {data.species.length}
-              </div>
+        {/* Info Overlay (Bottom Left) - Show for all categories */}
+        <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 z-20 bg-black/60 backdrop-blur-md rounded-lg p-6 md:p-8 border border-white/10 max-w-sm">
+          <div className="text-xl text-white/80 space-y-2">
+            <div>
+              <span className="font-semibold">Year:</span> {selectedYear}
+            </div>
+            <div>
+              <span className="font-semibold">Category:</span>{" "}
+              {selectedCategory || "All"}
+            </div>
+            <div>
+              <span className="font-semibold">Species:</span>{" "}
+              {selectedCategory
+                ? getSpeciesForYear(data, selectedYear, selectedCategory).length
+                : getSpeciesForYear(data, selectedYear).length}
             </div>
           </div>
-        )}
+        </div>
 
         {/* Detail Modal */}
         <DetailModal

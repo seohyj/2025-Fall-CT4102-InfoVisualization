@@ -83,7 +83,7 @@ export default function DetailModal({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-6xl h-[90vh] bg-black/60 backdrop-blur-md border border-white/10 rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row"
+          className="relative w-full max-w-6xl max-h-[90vh] bg-black/60 backdrop-blur-md border border-white/10 rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -96,18 +96,23 @@ export default function DetailModal({
           </button>
 
           {/* Left Panel - Image (Desktop) */}
-          <div className="w-full md:w-1/2 relative min-h-[300px] md:h-full bg-gray-900 flex-shrink-0">
+          <div className="w-full md:w-1/2 relative bg-gray-900 flex-shrink-0 flex items-center justify-center overflow-hidden min-h-[300px] md:min-h-0">
             {species.imageUrl ? (
-              <Image
-                src={species.imageUrl}
-                alt={species.commonName}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
+              <div className="relative w-full h-full flex items-center justify-center p-4">
+                <div className="relative w-full h-full max-h-[90vh] flex items-center justify-center">
+                  <Image
+                    src={species.imageUrl}
+                    alt={species.commonName}
+                    width={1200}
+                    height={800}
+                    className="max-w-full max-h-full w-auto h-auto object-contain"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+              </div>
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+              <div className="w-full h-full min-h-[300px] bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
                 <span className="text-white/30 text-lg text-center px-4">
                   {species.commonName}
                 </span>
@@ -115,7 +120,7 @@ export default function DetailModal({
             )}
             {/* Status Badge Overlay */}
             {statusColor && (
-              <div className="absolute top-4 left-4">
+              <div className="absolute top-4 left-4 z-10">
                 <div
                   className="px-4 py-2 rounded-full text-sm font-semibold text-white shadow-lg"
                   style={{ backgroundColor: statusColor }}
@@ -127,7 +132,7 @@ export default function DetailModal({
           </div>
 
           {/* Right Panel - Content */}
-          <div className="w-full md:w-1/2 flex flex-col overflow-y-auto bg-black/60 backdrop-blur-md">
+          <div className="w-full md:w-1/2 flex flex-col overflow-y-auto bg-black/60 backdrop-blur-md max-h-[90vh]">
             <div className="p-6 md:p-8 space-y-6">
               {/* Header */}
               <div>

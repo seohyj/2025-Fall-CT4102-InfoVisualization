@@ -113,7 +113,9 @@ export default function AboutPage() {
 
         {/* Status Categories Guide */}
         <section className="mb-12">
-          <h2 className="text-5xl font-bold mb-8 tracking-tight">Status Categories Guide</h2>
+          <h2 className="text-5xl font-bold mb-8 tracking-tight">
+            Status Categories Guide
+          </h2>
           <div className="space-y-6">
             {STATUS_INFO.map((status) => (
               <div
@@ -146,7 +148,9 @@ export default function AboutPage() {
 
         {/* Global Overview */}
         <section className="mb-12">
-          <h2 className="text-5xl font-bold mb-6 tracking-tight">Global Overview</h2>
+          <h2 className="text-5xl font-bold mb-6 tracking-tight">
+            Global Overview
+          </h2>
           <div className="border border-white/10 rounded-lg p-8 bg-black/50">
             <div className="space-y-4 text-lg md:text-xl text-white/80 leading-relaxed">
               <p>
@@ -179,7 +183,9 @@ export default function AboutPage() {
         {/* Link to IUCN */}
         <section className="mb-12">
           <div className="border border-white/20 rounded-lg p-8 bg-gradient-to-br from-black/80 to-black/50">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">더 알아보기</h2>
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">
+              더 알아보기
+            </h2>
             <p className="text-lg md:text-xl text-white/70 mb-6 leading-relaxed">
               종합적인 종 평가와 상세한 보전 정보는 공식 IUCN 적색목록
               웹사이트를 방문하세요.
@@ -188,9 +194,9 @@ export default function AboutPage() {
               href="https://www.iucnredlist.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2 bg-white text-black rounded-lg font-semibold text-lg hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-2 bg-red-700 text-white rounded-lg font-semibold text-lg hover:bg-white/90 transition-colors"
             >
-              <span>IUCN 적색목록 방문</span>
+              <span>IUCN Red List Official Website</span>
               <ExternalLink className="w-6 h-6" />
             </a>
           </div>
