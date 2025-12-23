@@ -44,31 +44,3 @@ npm run dev
 ```bash
 npm run build
 ```
-
-## Deployment
-
-This project is configured for static export and can be deployed to GitHub Pages.
-
-### GitHub Pages (추천: GitHub Actions로 자동 배포)
-
-1) **Repo 설정**
-- GitHub에서 `Settings → Pages`로 이동
-- **Source**를 **GitHub Actions**로 선택
-
-2) **(선택) Mapbox 토큰 설정**
-- 이 프로젝트는 클라이언트에서 Mapbox를 사용하므로 토큰은 번들에 포함됩니다. (즉, “public token” 취급)
-- GitHub에서 `Settings → Secrets and variables → Actions → New repository secret`
-- 이름: `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN`
-- 값: Mapbox access token
-
-3) **배포 트리거**
-- `main`(또는 `master`) 브랜치에 push 하면 `.github/workflows/deploy-pages.yml`이 실행되어 자동 배포됩니다.
-- 최초 배포 후 페이지 URL은 `Actions` 실행 결과의 `deploy` 단계에서 확인할 수 있습니다.
-
-### 로컬에서 Pages 경로로 미리보기(선택)
-
-GitHub Pages는 보통 `/<repo>` 하위 경로로 서비스되므로, 로컬에서 동일하게 확인하려면:
-
-```bash
-NEXT_PUBLIC_BASE_PATH="/<repo>" npm run build
-```
